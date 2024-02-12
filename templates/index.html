@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_blog %}
+    <div id="snippetContent">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="container">
+            <div class="row">
+                {% for carbonad in carbonads %}
+                    <div class="col-md-4">
+                        <div class="carbon-example flex-wrapper" style="width: 350px">
+                            <img src="{{ carbonad.image.url }}" alt="example design logo">
+                            <div class="inner-wrapper">
+                                <p>{{ carbonad.description }}</p>
+                                <p class="fine-print">{{ carbonad.name }}</p>
+                                <div style="display: flex; justify-content: space-around">
+                                    <form action="{% url 'carbonad_delete' carbonad.pk %}">
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                    <form action="{% url 'carbonad_update' carbonad.pk %}">
+                                        <button class="btn btn-success">Update</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <style type="text/css">body {
+            margin-top: 20px;
+        }
+
+        .carbon-example {
+            padding: 8px;
+            background-color: #fff;
+            width: 295px;
+            box-sizing: border-box;
+            border-radius: 6px;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            -webkit-align-items: flex-start;
+            -moz-align-items: flex-start;
+            align-items: flex-start;
+            position: relative;
+            z-index: 5;
+            box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .carbon-example img {
+            margin-right: 9px;
+            max-width: 125px;
+        }
+
+        .carbon-example .inner-wrapper {
+            text-align: left;
+        }
+
+        .carbon-example .inner-wrapper p {
+            font-size: 12px;
+            line-height: 1.33;
+            margin: 8px 0;
+        }
+
+        .carbon-example .inner-wrapper p.fine-print {
+            font-size: 8px;
+            color: #C5CDD0;
+            line-height: 1.25;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .flex-wrapper {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            align-items: center;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            -webkit-justify-content: space-between;
+            -moz-justify-content: space-between;
+            justify-content: space-between;
+        }
+
+        @media screen and (max-width: 991px) {
+            .flex-wrapper.two-col {
+                display: block;
+                text-align: center;
+            }
+        }
+
+        .flex-wrapper.two-col > * {
+            width: 50%;
+        }
+
+        .flex-wrapper.two-col > *:first-of-type {
+            padding-right: 130px;
+        }
+
+        @media screen and (max-width: 991px) {
+
+            .flex-wrapper.two-col > * {
+                width: 100%;
+            }
+
+            .flex-wrapper.two-col > *:first-of-type {
+                padding-right: 0;
+            }
+        }
+
+        .flex-wrapper.two-col.reversed > *:first-of-type {
+            order: 2;
+            padding-right: 0;
+        }
+
+        @media screen and (min-width: 992px) {
+            .flex-wrapper.two-col.reversed > *:first-of-type {
+                padding-left: 130px;
+            }
+        }
+
+        .flex-wrapper.three-col {
+            text-align: left;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            -webkit-align-items: flex-start;
+            -moz-align-items: flex-start;
+            align-items: flex-start;
+            margin-top: 40px;
+        }
+
+        @media screen and (max-width: 767px) {
+            .flex-wrapper.three-col {
+                -webkit-flex-wrap: wrap;
+                -moz-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            }
+        }
+
+        .flex-wrapper.three-col > * {
+            width: 33.3%;
+        }
+
+        @media screen and (max-width: 767px) {
+            .flex-wrapper.three-col > * {
+                width: 100%;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            .flex-wrapper.three-col li {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .flex-wrapper.three-col li:first-child {
+                padding-left: 0;
+            }
+
+            .flex-wrapper.three-col li:last-child {
+                padding-right: 0;
+            }
+        }
+
+        .flex-wrapper.three-col .flex-wrapper {
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            -webkit-align-items: flex-start;
+            -moz-align-items: flex-start;
+            align-items: flex-start;
+            margin-top: 0;
+        }
+
+        @media screen and (max-width: 767px) {
+            .flex-wrapper.three-col .flex-wrapper {
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                -webkit-justify-content: center;
+                -moz-justify-content: center;
+                justify-content: center;
+            }
+
+            .flex-wrapper.three-col .flex-wrapper:not(:first-of-type) {
+                margin-top: 40px;
+            }
+        }
+
+        .flex-wrapper.three-col .flex-wrapper .icon {
+            top: 0;
+            transform: none;
+        }</style>
+        <script type="text/javascript"></script>
+    </div>
+{% endblock %}
